@@ -1,0 +1,58 @@
+=================================================================
+ BRUTEX
+ Pour PC Windows avec carte graphique NVIDIA
+=================================================================
+
+CE QUE FAIT CE DOSSIER
+----------------------
+Il utilise hashcat pour retrouver, à l'aide du GPU NVIDIA, le mot de
+passe du document Word chiffré. Le document lui-même n'est PAS ici :
+seul son "hash" (empreinte) est présent, dans hash_test.txt. C'est
+tout ce dont hashcat a besoin, et c'est sans danger pour le fichier
+d'origine.
+
+PRÉREQUIS (une seule chose à vérifier)
+--------------------------------------
+Le pilote NVIDIA GeForce doit être installé et à jour.
+-> https://www.nvidia.com/Download/index.aspx
+C'est le cas sur la plupart des PC de jeu. Rien d'autre à installer :
+le reste se télécharge tout seul.
+
+UTILISATION
+-----------
+1) Copie TOUT ce dossier sur le PC Windows (garde les fichiers ensemble).
+2) Double-clique sur  DEMARRER.bat
+   - il télécharge et installe hashcat automatiquement (~60 Mo),
+   - il affiche le GPU détecté,
+   - il teste les mots du thème (fichier mots_theme.txt) avec leurs
+     variantes (majuscules, chiffres, années, caractères spéciaux...).
+3) Si un mot de passe est trouvé, il s'affiche à la fin de la ligne du
+   hash (après le dernier " : ") et avec --show. Note-le et renvoie-le.
+
+PERSONNALISER
+-------------
+- mots_theme.txt : ajoute tous les mots qui te viennent (un par ligne).
+  Plus la liste est pertinente, plus les chances sont grandes.
+  hashcat génère tout seul les variantes, inutile de mettre les
+  majuscules ou les chiffres.
+
+- FORCE_BRUTE.bat : si la liste de mots ne donne rien, ouvre ce fichier
+  avec le Bloc-notes, modifie la ligne "set MASQUE=..." (voir les
+  exemples dans le fichier), enregistre, puis double-clique dessus.
+  À réserver aux mots de passe courts : chaque caractère en plus
+  multiplie énormément le temps.
+
+ORDRES DE GRANDEUR (mode -m 9600, 100 000 itérations)
+-----------------------------------------------------
+- RTX 4090 : ~100 000 à 150 000 essais/s
+- RTX 3060 : ~25 000 à 40 000 essais/s
+Une liste de quelques milliers de mots + règles passe en minutes.
+Une force brute de 7-8 caractères "tout type" reste très longue, voire
+hors de portée même sur gros GPU : privilégie une liste de mots ciblée.
+
+RELANCER
+--------
+Tu peux relancer DEMARRER.bat autant de fois que tu veux ; hashcat
+reprend où il en était et se souvient de ce qui est déjà cassé
+(fichier hashcat.potfile).
+=================================================================

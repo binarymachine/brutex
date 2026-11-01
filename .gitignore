@@ -1,0 +1,11 @@
+# Artefacts d'exécution hashcat (ne pas versionner)
+hashcat.potfile
+*.potfile
+*.restore
+# hashcat téléchargé/extrait par DEMARRER.bat
+hashcat-*/
+hashcat-*.7z
+7zr.exe
+# divers
+.DS_Store
+generate hash.txt
