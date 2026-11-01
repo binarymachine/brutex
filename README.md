@@ -144,7 +144,7 @@ retirer définitivement.
 
 ## Étape 1 - Générer le fichier de hash depuis le document
 
-Sur ton Mac, dans ce dossier :
+Dans ce dossier :
 
 ```bash
 python3 docx2hash.py "example/test.docx" > example/hash_test.txt
