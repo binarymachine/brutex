@@ -9,3 +9,5 @@ hashcat-*.7z
 # divers
 .DS_Store
 generate hash.txt
+FOUND.txt
+*_DECHIFFRE.docx
